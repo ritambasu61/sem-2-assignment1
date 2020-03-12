@@ -29,7 +29,10 @@ def svd(matrix,row,col):
         for i in range(minimum):
             D[i]=np.sqrt(aTa_eig[0][i])
     
-    U=np.transpose(aaT_eig[1])
+    U=np.transpose(aaT_eig[1]) """i have defined u and v in such a way to make consistancy with our 
+    usual notation u,v and ut,vt...though in the ready made library function (linalg.svt) may be 
+    defined it in a transpose form or the row column interchange may be needed...Though from the result it will be clear that
+    it indeed a svt function()"""
     
     VT=aTa_eig[1]
     return (U,D,VT)
@@ -54,13 +57,10 @@ print("linalg u= \n",U,"\n\nlinalg d=\n",D,"\n\nlinalg v=\n",V)
 
 
 # use of timeit for calculating the time taken by np.linalg.svd()
-
-linalg_svtcode='''
-import numpy as np
+time0 = timeit.default_timer()
 A=np.array([[0,1,1],[0,1,0],[1,1,0],[0,1,1],[1,0,1]])
 U,D,V=np.linalg.svd(A)
-'''
-print("\nTime taken by np.linalg.svd() : ",timeit.timeit(linalg_svtcode))
+print("\nTime taken by linlag.svd function: ",timeit.default_timer()-time0)
 
 
     
